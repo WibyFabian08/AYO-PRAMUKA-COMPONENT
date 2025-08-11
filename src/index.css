@@ -1,0 +1,268 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lateef:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-lg  border border-gray-200;
+  }
+  .card-header {
+    @apply border-b border-gray-200 px-5 py-[18px];
+  }
+  .card-body {
+    @apply px-5 py-[18px];
+  }
+  .card-footer {
+    @apply border-t border-gray-200 px-5 py-[18px];
+  }
+  .base-input {
+    @apply border border-primary-semi-dark rounded-[10px] px-3 py-2 box-border w-full;
+  }
+  .base-input-error {
+    @apply border border-danger rounded-[10px] px-3 py-2 box-border w-full;
+  }
+
+  .base-button {
+    @apply text-s font-semibold h-10 px-4 rounded-xl disabled:bg-netral-40 disabled:text-netral-60 dark:text-netral-30;
+  }
+
+  .button-link {
+    @apply text-s p-2 font-semibold disabled:text-netral-60 disabled:cursor-not-allowed;
+  }
+
+  .button-primary {
+    @apply base-button text-netral-10 disabled:text-netral-30  dark:text-netral-30 bg-primary dark:bg-primary-dark hover:bg-primary-dark disabled:hover:bg-netral-40;
+  }
+
+  .button-primary-outline {
+    @apply base-button text-primary dark:bg-netral-100 bg-netral-10 border dark:text-netral-10 dark:hover:bg-primary-dark border-primary hover:bg-primary hover:text-netral-10;
+  }
+
+  .button-primary-link {
+    @apply button-link text-primary dark:text-primary-dark;
+  }
+
+  .button-danger {
+    @apply base-button text-netral-10 bg-danger hover:bg-danger-dark;
+  }
+
+  .button-danger-outline {
+    @apply base-button text-danger bg-netral-10  border border-danger hover:bg-danger hover:text-netral-10;
+  }
+
+  .button-danger-link {
+    @apply button-link text-danger;
+  }
+
+  .button-success {
+    @apply base-button text-netral-10 bg-success hover:bg-success-dark;
+  }
+
+  .button-success-outline {
+    @apply base-button text-success bg-netral-10 border border-success hover:bg-success hover:text-netral-10;
+  }
+
+  .button-success-link {
+    @apply button-link text-success;
+  }
+
+  .button-warning {
+    @apply base-button text-netral-10 bg-warning hover:bg-warning-dark;
+  }
+
+  .button-warning-outline {
+    @apply base-button text-warning bg-netral-10 border border-warning hover:bg-warning hover:text-netral-10;
+  }
+
+  .button-warning-link {
+    @apply button-link text-warning;
+  }
+
+  .button-info {
+    @apply base-button text-netral-10 bg-info hover:bg-info-dark;
+  }
+
+  .button-info-outline {
+    @apply base-button text-info bg-netral-10 border border-info hover:bg-info hover:text-netral-10;
+  }
+
+  .button-info-link {
+    @apply button-link text-info;
+  }
+
+  /* .card {
+		@apply p-6 bg-netral-10 border border-gray-200 rounded-xl dark:bg-netral-100 dark:border-netral-70;
+	} */
+
+  .card-no-shadow {
+    @apply p-6 bg-netral-10 border border-gray-200 rounded-xl dark:bg-netral-100 dark:border-netral-70;
+  }
+
+  .card-no-padding {
+    @apply bg-netral-10 border border-gray-200 rounded-xl dark:bg-netral-100 dark:border-netral-70;
+  }
+
+  .img-latest-news {
+    @apply w-[6.375rem] h-[6.375rem] rounded-lg object-cover;
+  }
+
+  .img-author-news {
+    @apply w-6 h-6 rounded-full object-cover;
+  }
+}
+
+/* animation for toast */
+.toast-enter-active {
+  animation: wobble 0.5s ease;
+}
+
+.toast-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+
+.toast-leave-active {
+  transition: all 0.5s ease;
+}
+
+@keyframes wobble {
+  0% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  60% {
+    transform: translateX(8px);
+  }
+
+  70% {
+    transform: translateX(-8px);
+  }
+
+  80% {
+    transform: translateX(4px);
+  }
+
+  90% {
+    transform: translateX(-4px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* input[type="date"] {
+  position: relative;
+}
+
+input[type="date"]:after {
+  @apply text-primary;
+  font-family: "tabler-icons";
+  font-size: 1.25rem;
+  content: "\ea52";
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  color: transparent;
+  background: transparent;
+}
+
+input[type="date"]::-webkit-inner-spin-button {
+  z-index: 1;
+}
+
+input[type="date"]::-webkit-clear-button {
+  z-index: 1;
+}
+
+input[type="time"] {
+  position: relative;
+}
+
+input[type="time"]:after {
+  @apply text-primary;
+  font-family: "tabler-icons";
+  font-size: 1.25rem;
+  content: "\ea70"; 
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  color: transparent;
+  background: transparent;
+}
+
+input[type="time"]::-webkit-inner-spin-button {
+  z-index: 1;
+}
+
+input[type="date"]::-webkit-clear-button {
+  z-index: 1;
+}
+
+input[type="time"]::-webkit-clear-button {
+  z-index: 1;
+}
+
+input[type="datetime-local"] {
+  position: relative;
+}
+
+input[type="datetime-local"]:after {
+  @apply text-primary;
+  font-family: "tabler-icons";
+  font-size: 1.25rem;
+  content: "\ea52"; 
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  color: transparent;
+  background: transparent;
+}
+
+input[type="datetime-local"]::-webkit-inner-spin-button {
+  z-index: 1;
+}
+
+input[type="datetime-local"]::-webkit-clear-button {
+  z-index: 1;
+} */

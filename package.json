@@ -1,0 +1,40 @@
+{
+  "name": "ayo-pramuka-component",
+  "version": "0.0.54",
+  "type": "module",
+  "main": "dist/ayo-pramuka-component.umd.js",
+  "module": "dist/ayo-pramuka-component.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tabler/icons-vue": "^3.29.0",
+    "@vueup/vue-quill": "^1.2.0",
+    "axios": "^1.10.0",
+    "flowbite": "^2.3.0",
+    "moment": "^2.30.1",
+    "sweetalert2": "^11.22.2",
+    "vue": "^3.4.19",
+    "vue3-dropzone": "^2.2.1",
+    "vue3-emoji-picker": "^1.1.8"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.18",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.1.4",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
+  },
+  "keywords": [
+    "vue",
+    "component",
+    "ui",
+    "ayo-pramuka-component"
+  ]
+}
