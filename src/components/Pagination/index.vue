@@ -21,21 +21,15 @@ const props = defineProps({
 const emit = defineEmits(["pageTo"]);
 
 const page = ref(props.defaultPage);
-const limit = ref({
-  name: `${props.defaultLimit}`,
-  value: props.defaultLimit,
-});
+const limit = ref(props.defaultLimit);
 
 const handleLimit = (e) => {
   if (e) {
-    limit.value = {
-      name: e.name,
-      value: e.value,
-    };
+    limit.value = e.target.value;
 
     pageTo({
       page: props.defaultPage,
-      limit: e.value,
+      limit: limit.value === "Semua" ? 1000000 : limit.value,
     });
   }
 };
@@ -53,7 +47,7 @@ const pageTo = (data) => {
   }
   emit("pageTo", {
     page: page.value || 1,
-    limit: limit.value.value || 5,
+    limit: limit.value === "Semua" ? 1000000 : limit.value || 5,
   });
 };
 
@@ -158,38 +152,17 @@ watch(
 
     <div class="flex items-center justify-end gap-2">
       <h6 class="font-semibold text-m">Halaman</h6>
-      <div class="w-1/3">
-        <InputSelect
-          :options="[
-            {
-              name: '5',
-              value: 5,
-            },
-            {
-              name: '10',
-              value: 10,
-            },
-            {
-              name: '20',
-              value: 20,
-            },
-            {
-              name: '50',
-              value: 50,
-            },
-            {
-              name: 'Semua',
-              value: 1000000,
-            },
-          ]"
-          :renderOption="'name'"
-          :withLabel="false"
-          :placeholder="limit.name"
-          :customSearch="false"
-          :value="limit"
-          @handleSelect="handleLimit"
-        />
-      </div>
+      <select
+        class="flex items-center font-semibold border rounded-lg text-netral-100 text-m border-netral-40 h-9"
+        v-model="limit"
+        @change="handleLimit($event)"
+      >
+        <option class="font-semibold text-m">5</option>
+        <option class="font-semibold text-m">10</option>
+        <option class="font-semibold text-m">20</option>
+        <option class="font-semibold text-m">50</option>
+        <option class="font-semibold text-m">Semua</option>
+      </select>
     </div>
   </div>
 </template>
