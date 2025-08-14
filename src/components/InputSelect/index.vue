@@ -62,6 +62,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    withLabel: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {
@@ -143,7 +147,7 @@ export default {
 
 <template>
   <div class="w-full">
-    <label class="mb-1 font-semibold form-label text-s text-netral-100"
+    <label v-if="withLabel" class="mb-1 font-semibold form-label text-s text-netral-100"
       >{{ label }} <span class="text-danger" v-if="required">*</span>
     </label>
     <div class="select-container">

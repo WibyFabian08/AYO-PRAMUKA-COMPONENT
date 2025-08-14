@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, computed } from "vue";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-vue";
+import InputSelect from "../InputSelect/index.vue";
 
 const props = defineProps({
   pagenation: {
@@ -20,7 +21,24 @@ const props = defineProps({
 const emit = defineEmits(["pageTo"]);
 
 const page = ref(props.defaultPage);
-const limit = ref(props.defaultLimit);
+const limit = ref({
+  name: `${props.defaultLimit}`,
+  value: props.defaultLimit,
+});
+
+const handleLimit = (e) => {
+  if (e) {
+    limit.value = {
+      name: e.name,
+      value: e.value,
+    };
+
+    pageTo({
+      page: props.defaultPage,
+      limit: e.value,
+    });
+  }
+};
 
 const pageNum = (data) => {
   if (!data) return null;
@@ -33,10 +51,9 @@ const pageTo = (data) => {
   } else {
     page.value = data.page;
   }
-  limit.value = data.limit;
   emit("pageTo", {
     page: page.value || 1,
-    limit: limit.value || 5,
+    limit: limit.value.value || 5,
   });
 };
 
@@ -106,34 +123,74 @@ watch(
 </script>
 
 <template>
-  <div class="flex items-center justify-between">
-    <button
-      @click="goToPrevious"
-      class="flex items-center gap-1 px-4 font-semibold border rounded-lg h-9 text-m border-netral-40"
-    >
-      <IconChevronLeft :size="16" />
-      <span>Kembali</span>
-    </button>
-
-    <div class="flex items-center gap-2">
+  <div class="flex items-center justify-between gap-5">
+    <div class="flex items-center justify-between gap-3">
       <button
-        v-for="(page, index) in paginationPages"
-        :key="index"
-        class="flex items-center justify-center gap-1 font-semibold transition-all duration-150 border rounded-lg w-9 h-9 hover:bg-primary hover:text-white text-m border-netral-40"
-        :class="defaultPage === page ? 'bg-primary text-white' : ''"
-        @click="goToPage(page)"
+        @click="goToPrevious"
+        :disabled="defaultPage === 1"
+        class="flex items-center gap-1 px-3 font-semibold border rounded-lg disabled:bg-netral-20 disabled:cursor-not-allowed h-9 text-m border-netral-40"
       >
-        {{ page }}
+        <IconChevronLeft :size="16" />
+        <span>Back</span>
+      </button>
+
+      <div class="flex items-center gap-2">
+        <button
+          v-for="(page, index) in paginationPages"
+          :key="index"
+          class="flex items-center justify-center gap-1 font-semibold transition-all duration-150 border rounded-lg w-9 h-9 hover:bg-primary hover:text-white text-m border-netral-40"
+          :class="defaultPage === page ? 'bg-primary text-white' : ''"
+          @click="goToPage(page)"
+        >
+          {{ page }}
+        </button>
+      </div>
+
+      <button
+        :disabled="!props.pagenation?.next_page_url"
+        @click="goToNext"
+        class="flex items-center gap-1 px-3 font-semibold border rounded-lg h-9 disabled:bg-netral-20 disabled:cursor-not-allowed text-m border-netral-40"
+      >
+        <span>Next</span>
+        <IconChevronRight :size="16" />
       </button>
     </div>
 
-    <button
-      @click="goToNext"
-      class="flex items-center gap-1 px-4 font-semibold border rounded-lg h-9 text-m border-netral-40"
-    >
-      <span>Lanjut</span>
-      <IconChevronRight :size="16" />
-    </button>
+    <div class="flex items-center justify-end gap-2">
+      <h6 class="font-semibold text-m">Halaman</h6>
+      <div class="w-1/3">
+        <InputSelect
+          :options="[
+            {
+              name: '5',
+              value: 5,
+            },
+            {
+              name: '10',
+              value: 10,
+            },
+            {
+              name: '20',
+              value: 20,
+            },
+            {
+              name: '50',
+              value: 50,
+            },
+            {
+              name: 'Semua',
+              value: 1000000,
+            },
+          ]"
+          :renderOption="'name'"
+          :withLabel="false"
+          :placeholder="limit.name"
+          :customSearch="false"
+          :value="limit"
+          @handleSelect="handleLimit"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
