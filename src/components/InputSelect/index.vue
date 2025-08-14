@@ -158,7 +158,7 @@ export default {
         @keydown.enter="selectItemFromKeyboard"
         @keydown.esc="handleEsc"
         :placeholder="placeholder"
-        class="outline-none text-s disabled:bg-netral-30 disabled:border-netral-50 disabled:cursor-not-allowed"
+        class="border outline-none text-s disabled:bg-netral-30 disabled:border-netral-50 disabled:cursor-not-allowed focus:ring-0 focus:outline-none active:ring-0 active:outline-none border-netral-30 active:border-netral-30 focus:border-netral-30"
         :class="`${error ? 'base-input-error' : 'base-input'}`"
         :disabled="disabled"
       />

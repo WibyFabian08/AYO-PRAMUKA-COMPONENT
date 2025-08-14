@@ -560,7 +560,7 @@ onMounted(() => {
           :placeholder="'Tanggal Lahir'"
           v-model:value="form.tanggal_lahir"
           :required="true"
-          :disabled="true"
+          :disabled="false"
           :error="null"
           @handleChange="(e) => (form.tanggal_lahir = e)"
         />
