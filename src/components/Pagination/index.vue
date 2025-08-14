@@ -16,6 +16,10 @@ const props = defineProps({
     type: Number,
     default: null,
   },
+  showLimit: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const emit = defineEmits(["pageTo"]);
@@ -150,10 +154,10 @@ watch(
       </button>
     </div>
 
-    <div class="flex items-center justify-end gap-2">
+    <div v-if="showLimit" class="flex items-center justify-end gap-2">
       <h6 class="font-semibold text-m">Halaman</h6>
       <select
-        class="flex items-center font-semibold border rounded-lg text-netral-100 text-m border-netral-40 h-9"
+        class="flex items-center font-semibold border rounded-lg outline-none text-netral-100 text-m border-netral-40 h-9 focus:border-netral-40 focus:outline-none focus:ring-0 active:outline-none active:ring-0 active:border-netral-40"
         v-model="limit"
         @change="handleLimit($event)"
       >

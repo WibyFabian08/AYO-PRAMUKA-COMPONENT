@@ -646,6 +646,7 @@ onMounted(() => {
       <PaginationComponent
         :defaultLimit="10"
         :defaultPage="page"
+        :showLimit="true"
         :pagenation="{
           first_page_url:
             'https:\/\/passport.ayosatu.xyz\/api\/kepramukaan\/kegiatan\/get-kegiatan?page=1',
