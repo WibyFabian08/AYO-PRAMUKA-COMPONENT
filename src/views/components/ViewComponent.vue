@@ -72,6 +72,7 @@ const tabList = [
   "dsdsasa dsdsd",
   "dsdsds",
 ];
+const page = ref(1);
 const files = ref([]);
 const defaultFiles = ref([]);
 const dropdownRef = ref(null);
@@ -180,6 +181,10 @@ const dummyData = [
     time: "20:00",
   },
 ];
+
+const pageTo = (e) => {
+  page.value = Number(e.page);
+};
 
 const handleUploadBase64 = (e) => {
   alert("upload");
@@ -637,21 +642,22 @@ onMounted(() => {
       ><IconTrash :size="15"
     /></Button>
 
-    <PaginationComponent
-      :defaultLimit="10"
-      :defaultPage="1"
-      :pagenation="{
-        first_page_url:
-          'https:\/\/passport.ayosatu.xyz\/api\/v2\/article\/list\/kwartir?page=1',
-        last_page_url:
-          'https:\/\/passport.ayosatu.xyz\/api\/v2\/article\/list\/kwartir?page=10',
-        prev_page_url: null,
-        next_page_url:
-          'https:\/\/passport.ayosatu.xyz\/api\/v2\/article\/list\/kwartir?page=2',
-        total: 92,
-      }"
-      @PageTo="pageTo"
-    />
+    <div class="py-5">
+      <PaginationComponent
+        :defaultLimit="10"
+        :defaultPage="page"
+        :pagenation="{
+          first_page_url:
+            'https:\/\/passport.ayosatu.xyz\/api\/kepramukaan\/kegiatan\/get-kegiatan?page=1',
+          last_page_url:
+            'https:\/\/passport.ayosatu.xyz\/api\/kepramukaan\/kegiatan\/get-kegiatan?page=10',
+          next_page_url:
+            'https:\/\/passport.ayosatu.xyz\/api\/kepramukaan\/kegiatan\/get-kegiatan?page=2',
+          prev_page_url: null,
+        }"
+        @PageTo="pageTo"
+      />
+    </div>
   </div>
 
   <SelectKwartir
