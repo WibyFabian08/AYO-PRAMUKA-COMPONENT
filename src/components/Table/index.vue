@@ -50,14 +50,14 @@ const handleCheckAll = (data) => {
 </script>
 
 <template>
-  <div class="overflow-x-auto">
-    <table class="w-full border border-collapse border-netral-40">
-      <thead>
+  <div class="overflow-x-auto border border-b-0 rounded-xl border-netral-40">
+    <table class="w-full">
+      <thead class="border-b border-netral-40">
         <tr>
           <template v-for="(row, index) in rows" :key="index">
             <th
               v-if="row.isSort"
-              class="cursor-pointer text-nowrap align-middle border border-netral-40 text-s font-bold text-netral-100 capitalize px-[10px] py-[14px] bg-netral-30"
+              class="cursor-pointer text-nowrap align-middle text-s font-bold text-netral-100 capitalize px-[10px] py-[14px] bg-netral-30"
               @click="handleSort(row)"
               :style="`width: ${row.width ? row.width : ''}; text-align: ${
                 row.align ? row.align : 'center'
@@ -100,7 +100,7 @@ const handleCheckAll = (data) => {
             </th>
             <th
               v-else-if="row.type == 'checklist'"
-              class="text-nowrap align-middle text-s font-bold text-netral-100 capitalize px-[10px] py-[14px] bg-netral-30 border border-netral-40"
+              class="text-nowrap align-middle text-s font-bold text-netral-100 capitalize px-[10px] py-[14px] bg-netral-30"
               :style="`width: ${row.width ? row.width : ''}; text-align: ${
                 row.align ? row.align : 'center'
               }`"
@@ -117,7 +117,7 @@ const handleCheckAll = (data) => {
             </th>
             <th
               v-else-if="row.isChecked"
-              class="text-nowrap align-middle text-s font-bold text-netral-100 capitalize px-[10px] py-[14px] bg-netral-30 border border-netral-40"
+              class="text-nowrap align-middle text-s font-bold text-netral-100 capitalize px-[10px] py-[14px] bg-netral-30"
               :style="`width: ${row.width ? row.width : ''}; text-align: ${
                 row.align ? row.align : 'center'
               }`"
@@ -137,7 +137,7 @@ const handleCheckAll = (data) => {
             </th>
             <th
               v-else
-              class="text-nowrap align-middle text-s font-bold text-netral-100 capitalize px-[10px] py-[14px] bg-netral-30 border border-netral-40"
+              class="text-nowrap align-middle text-s font-bold text-netral-100 capitalize px-[10px] py-[14px] bg-netral-30"
               :style="`width: ${row.width ? row.width : ''}; text-align: ${
                 row.align ? row.align : 'center'
               }`"
@@ -150,17 +150,23 @@ const handleCheckAll = (data) => {
       <Loading v-if="loading" :type="'table'" :colCount="rows.length" />
       <tbody v-if="columns.length === 0 && !loading">
         <tr>
-          <td class="border border-netral-40" :colspan="rows.length">
+          <td class="" :colspan="rows.length">
             <NoData />
           </td>
         </tr>
       </tbody>
       <tbody v-if="columns.length > 0 && !loading">
-        <tr v-for="(column, index) in columns" :key="index">
+        <tr
+          v-for="(column, index) in columns"
+          :key="index"
+          :class="`${
+            index !== column.length ? 'border-b border-netral-40' : ''
+          }`"
+        >
           <td
             v-for="row in rows"
             :key="row.field"
-            class="align-middle border border-netral-40 px-[10px] py-2 text-s text-netral-100 font-semibold"
+            class="align-middle px-[10px] py-2 text-s text-netral-100 font-semibold"
             :style="`width: ${row.width ? row.width : ''}; text-align: ${
               row.align ? row.align : 'center'
             }`"

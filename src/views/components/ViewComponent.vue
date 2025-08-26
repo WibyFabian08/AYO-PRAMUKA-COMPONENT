@@ -45,7 +45,7 @@ const tableRow = [
   },
   {
     label: "Gambar",
-    field: "foto",
+    field: "id",
     align: "center",
   },
   {
@@ -622,11 +622,21 @@ onMounted(() => {
 
     <NoData />
 
-    <TableComponent
-      :rows="tableRow"
-      :columns="[]"
-      :loading="false"
-    ></TableComponent>
+    <div class="p-10">
+      <TableComponent
+        :rows="tableRow"
+        :columns="[
+          {
+            id: 1,
+          },
+          {
+            id: 2,
+          },
+        ]"
+        :loading="false"
+      ></TableComponent>
+
+    </div>
 
     <div class="w-60">
       <Button
