@@ -37,6 +37,7 @@ import InputPassword from "../../components/InputPassword/index.vue";
 import CheckboxText from "../../components/basics/CheckboxText.vue";
 import UploadFileBase64 from "../../components/UploadFile/index.vue";
 import InputSelectSearch from "../../components/InputSelect/index.vue";
+import Scanner from "../../components/Scanner/index.vue";
 
 const tableRow = [
   {
@@ -337,6 +338,10 @@ const timelinesItems = [
   },
 ];
 
+const handleScan = (e) => {
+  alert(e);
+};
+
 onMounted(() => {
   setTimeout(() => {
     form.value.dummy = {
@@ -635,7 +640,6 @@ onMounted(() => {
         ]"
         :loading="false"
       ></TableComponent>
-
     </div>
 
     <div class="w-60">
@@ -782,6 +786,17 @@ onMounted(() => {
     :required="true"
     @handleSelect="(e) => (form.dummy = e)"
   />
+
+  <Scanner
+    :immediate="false"
+    :label="'Halooo'"
+    :with-icon="true"
+    @handleScan="handleScan"
+  >
+    <template #icon>
+      <IconTrash :size="15" />
+    </template>
+  </Scanner>
 
   <!-- <PageLoader/> -->
 </template>
