@@ -38,17 +38,18 @@ import DropdownButton from './components/commons/DropdownButton.vue'
 import RenderList from './components/commons/RenderList.vue'
 import InputPassword from './components/InputPassword/index.vue'
 import UploadFile from './components/UploadFile/index.vue'
+import Scanner from './components/Scanner/index.vue'
 
 const components = [Badge,
   InputText, CheckboxText, ImageView, InfiniteScrollContainer, InputOtp, InputSelect, Modal, MultipleSelect, MultiSelect, Pagination, Select, Select2, Spinner,
   Tab, Timelines, Toggle, UploadFile, Button, EmojiPicker, GlobalLoading, InputDate, InputNumber, InputTextArea,
-  Table, Switch, NoData, TextEditor, SelectKwartir, PageLoader, RenderImage, DropdownButton, RenderList, InputPassword]
+  Table, Switch, NoData, TextEditor, SelectKwartir, PageLoader, RenderImage, DropdownButton, RenderList, InputPassword, Scanner]
 
 export {
   Badge,
   InputText, CheckboxText, ImageView, InfiniteScrollContainer, InputOtp, InputSelect, Modal, MultipleSelect, MultiSelect, Pagination, Select, Select2, Spinner,
   Tab, Timelines, Toggle, UploadFile, Button, EmojiPicker, GlobalLoading, InputDate, InputNumber, InputTextArea,
-  Table, Switch, NoData, TextEditor, SelectKwartir, PageLoader, RenderImage, DropdownButton, RenderList, InputPassword
+  Table, Switch, NoData, TextEditor, SelectKwartir, PageLoader, RenderImage, DropdownButton, RenderList, InputPassword, Scanner
 }
 
 export default {
