@@ -787,12 +787,7 @@ onMounted(() => {
     @handleSelect="(e) => (form.dummy = e)"
   />
 
-  <Scanner
-    :immediate="false"
-    :label="'Halooo'"
-    :with-icon="true"
-    @handleScan="handleScan"
-  >
+  <Scanner @handleScan="handleScan">
     <template #icon>
       <IconTrash :size="15" />
     </template>

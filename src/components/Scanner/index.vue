@@ -1,23 +1,8 @@
 <script setup>
 import { onMounted, ref, onBeforeUnmount } from "vue";
 import { Html5QrcodeScanner } from "html5-qrcode";
-import Button from "../commons/Button.vue";
 
-const emit = defineEmits(["handleScan", "handleErrorScan"]);
-const props = defineProps({
-  label: {
-    type: String,
-    default: "Pindai",
-  },
-  withIcon: {
-    type: Boolean,
-    default: false,
-  },
-  immediate: {
-    type: Boolean,
-    default: false,
-  },
-});
+const emit = defineEmits(["handleScan"]);
 
 const loading = ref(false);
 const isScan = ref(false);
@@ -55,9 +40,7 @@ const handleOpenScan = async () => {
 };
 
 onMounted(async () => {
-  if (props.immediate) {
-    handleOpenScan();
-  }
+  handleOpenScan();
 });
 
 const stopScan = () => {
@@ -73,19 +56,11 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Button v-if="!isScan" @handleClick="handleOpenScan">
-    {{ label }}
-    <slot v-if="withIcon" name="icon"></slot>
-  </Button>
   <div
-    v-if="isScan"
     id="scanner"
     class="inset-0 flex flex-col items-center justify-center w-full h-full p-4 space-y-5"
   >
     <div id="qr-reader" class="w-full h-full"></div>
-    <Button @handleClick="stopScan" :button-type="'danger'"
-      >Tutup Pemindai
-    </Button>
   </div>
   <div
     class="flex items-center justify-center w-full min-h-screen"
