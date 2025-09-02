@@ -50,7 +50,7 @@ const handleCheckAll = (data) => {
 </script>
 
 <template>
-  <div class="overflow-x-auto border border-b-0 rounded-xl border-netral-40">
+  <div class="overflow-x-auto border border-b-0 rounded-lg border-netral-40">
     <table class="w-full">
       <thead class="border-b border-netral-40">
         <tr>
