@@ -126,7 +126,7 @@ watch(
       <button
         @click="goToPrevious"
         :disabled="defaultPage === 1"
-        class="flex items-center gap-1 px-3 font-semibold border rounded-lg disabled:bg-netral-20 disabled:cursor-not-allowed h-9 text-m border-netral-40"
+        class="flex items-center gap-1 px-3 font-semibold border rounded-lg disabled:bg-netral-20 disabled:cursor-not-allowed h-9 text-s border-netral-40"
       >
         <IconChevronLeft :size="16" />
         <span>Back</span>
@@ -136,7 +136,7 @@ watch(
         <button
           v-for="(page, index) in paginationPages"
           :key="index"
-          class="flex items-center justify-center gap-1 font-semibold transition-all duration-150 border rounded-lg w-9 h-9 hover:bg-primary hover:text-white text-m border-netral-40"
+          class="flex items-center justify-center gap-1 font-semibold transition-all duration-150 border rounded-lg w-9 h-9 hover:bg-primary hover:text-white text-s border-netral-40"
           :class="defaultPage === page ? 'bg-primary text-white' : ''"
           @click="goToPage(page)"
         >
@@ -147,7 +147,7 @@ watch(
       <button
         :disabled="!props.pagenation?.next_page_url"
         @click="goToNext"
-        class="flex items-center gap-1 px-3 font-semibold border rounded-lg h-9 disabled:bg-netral-20 disabled:cursor-not-allowed text-m border-netral-40"
+        class="flex items-center gap-1 px-3 font-semibold border rounded-lg h-9 disabled:bg-netral-20 disabled:cursor-not-allowed text-s border-netral-40"
       >
         <span>Next</span>
         <IconChevronRight :size="16" />
@@ -155,17 +155,17 @@ watch(
     </div>
 
     <div v-if="showLimit" class="flex items-center justify-end gap-2">
-      <h6 class="font-semibold text-m">Halaman</h6>
+      <h6 class="font-semibold text-s">Halaman</h6>
       <select
-        class="flex items-center font-semibold border rounded-lg outline-none text-netral-100 text-m border-netral-40 h-9 focus:border-netral-40 focus:outline-none focus:ring-0 active:outline-none active:ring-0 active:border-netral-40"
+        class="flex items-center font-semibold border rounded-lg outline-none text-netral-100 text-s border-netral-40 h-9 focus:border-netral-40 focus:outline-none focus:ring-0 active:outline-none active:ring-0 active:border-netral-40"
         v-model="limit"
         @change="handleLimit($event)"
       >
-        <option class="font-semibold text-m">5</option>
-        <option class="font-semibold text-m">10</option>
-        <option class="font-semibold text-m">20</option>
-        <option class="font-semibold text-m">50</option>
-        <option class="font-semibold text-m">Semua</option>
+        <option class="font-semibold text-s">5</option>
+        <option class="font-semibold text-s">10</option>
+        <option class="font-semibold text-s">20</option>
+        <option class="font-semibold text-s">50</option>
+        <option class="font-semibold text-s">Semua</option>
       </select>
     </div>
   </div>
